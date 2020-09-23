@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
-import Yelp from '.../util/Yelp';
+import Yelp from '../../util/Yelp.js';
 //import { render } from '@testing-library/react';
 
 //business object
@@ -22,7 +22,8 @@ import Yelp from '.../util/Yelp';
 //const businesses = [business, business, business, business, business, business];
 
 class App extends React.Component {
-  constructor() {
+  constructor(props) {
+    super(props);
     this.state = {businesses: []};
     this.searchYelp = this.searchYelp.bind(this);
   };
@@ -39,10 +40,12 @@ class App extends React.Component {
     <div className="App">
       <h1>ravenous</h1>
       <SearchBar searchYelp={this.searchYelp} />
-      <BusinessList businesses={this.businesses} /> 
+      <BusinessList businesses={this.state.businesses} /> 
     </div>
    );
   };
 };
 
 export default App;
+//<BusinessList businesses={this.state.businesses} /> must be .state so it can change. need practice on this.
+//when to use this, this.super etc.
